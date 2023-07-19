@@ -2,7 +2,7 @@ import { EndBlockTypeWhenRecover, MainnetDataDownloader } from "../../src";
 import { EventDataSourceType } from "../../src/enum/EventDataSourceType";
 
 async function main() {
-  let endBlock: EndBlockTypeWhenRecover = "latestDownloaded";
+  let endBlock: EndBlockTypeWhenRecover = 17603901;
   // It will use RPCProviderUrl in tuner.config.js if this is undefined.
   let RPCProviderUrl: string | undefined = undefined;
   // You can specify data source of events here, and Uniswap v3 Subgraph as default is recommended rather than RPC for at least 75% time saving.

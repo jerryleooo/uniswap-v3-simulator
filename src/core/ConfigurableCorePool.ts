@@ -279,6 +279,12 @@ export class ConfigurableCorePool implements IConfigurableCorePool, Visitable {
         amountSpecified,
         sqrtPriceLimitX96
       ).then(({ amount0, amount1, sqrtPriceX96 }) => {
+        console.log("amount0", amount0, param.amount0, JSBI.equal(amount0, param.amount0))
+        console.log("amount1", amount1, param.amount1, JSBI.equal(amount1, param.amount1))
+        console.log("sqrtPriceX96", sqrtPriceX96, param.sqrtPriceX96, JSBI.equal(sqrtPriceX96, param.sqrtPriceX96))
+        console.log("\n")
+        console.log(param)
+        
         return (
           JSBI.equal(amount0, param.amount0) &&
           JSBI.equal(amount1, param.amount1) &&
@@ -329,6 +335,7 @@ export class ConfigurableCorePool implements IConfigurableCorePool, Visitable {
       solutionList.push(solution2);
     }
     for (let i = 0; i < solutionList.length; i++) {
+      console.log(i)
       if (
         await tryWithDryRun(
           param,
@@ -343,7 +350,7 @@ export class ConfigurableCorePool implements IConfigurableCorePool, Visitable {
       }
     }
     throw new Error(
-      "Can't resolve to the same as event records. Please check event input."
+      "Can't resolve to the same as event records. Please check event input. " + JSON.stringify(param) + " " + JSON.stringify(solutionList)
     );
   }
 

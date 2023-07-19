@@ -43,6 +43,7 @@ export class MainnetDataDownloader {
       let tunerConfig = loadConfig(undefined);
       RPCProviderUrl = tunerConfig.RPCProviderUrl;
     }
+    console.log(`RPCProviderUrl: ${RPCProviderUrl}`);
     this.RPCProvider = new providers.JsonRpcProvider(RPCProviderUrl);
     this.eventDataSourceType = eventDataSourceType;
   }
@@ -869,7 +870,7 @@ export class MainnetDataDownloader {
             }
           } catch (error) {
             return Promise.reject(
-              `Swap failed. Event index: ${index}. Event: ${printParams(
+              `Swap failed: ${error}. Event index: ${index}. Event: ${printParams(
                 param
               )}.`
             );
